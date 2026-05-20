@@ -123,12 +123,15 @@
     /* AUSSTATTUNG GRID */
     .feature-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+      grid-template-columns: repeat(3, 1fr);
       gap: 1px;
       background: var(--border);
       border: 1px solid var(--border);
       border-radius: 8px;
       overflow: hidden;
+    }
+    @media (max-width: 600px) {
+      .feature-grid { grid-template-columns: repeat(2, 1fr); }
     }
     .feature-item {
       background: #fff;
@@ -267,13 +270,7 @@
   <p class="section-label">Unterkunft</p>
   <h2>Boxen & Haltung</h2>
   <div class="box-section">
-    <div class="box-header">
-      <div>
-        <p class="box-meta">25 Stellplätze gesamt · Vollpension</p>
-        <p class="box-meta" style="margin-top:4px;">Preise auf Anfrage</p>
-      </div>
-      <span class="free-badge">1 Platz frei</span>
-    </div>
+    <p class="box-meta" style="margin-bottom:1rem;">25 Stellplätze · Vollpension · Preise auf Anfrage</p>
     <p style="font-size:14px; color: var(--text-muted);">Wir bieten verschiedene Haltungsformen und sind besonders geeignet für Pferde mit besonderen Bedürfnissen.</p>
     <div class="tag-list">
       <span class="tag">Innenbox</span>
