@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Florian-Hof Rheurdt – Freizeitstall am Niederrhein</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500&family=Source+Sans+3:wght@300;400;600&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --green-dark: #2d4a1e;
+      --green-mid: #3b6d11;
+      --green-accent: #7ab648;
+      --green-light: #e8f0d8;
+      --green-pale: #f4f8ee;
+      --text: #1a2212;
+      --text-muted: #5a6e4a;
+      --border: #c8dab0;
+    }
+
+    body {
+      font-family: 'Source Sans 3', sans-serif;
+      font-weight: 400;
+      color: var(--text);
+      background: #fafaf7;
+      line-height: 1.7;
+    }
+
+    /* NAV */
+    nav {
+      position: sticky;
+      top: 0;
+      background: rgba(250,250,247,0.95);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid var(--border);
+      padding: 0 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 56px;
+      z-index: 100;
+    }
+    .nav-logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 18px;
+      color: var(--green-dark);
+      text-decoration: none;
+    }
+    .nav-links { display: flex; gap: 2rem; list-style: none; }
+    .nav-links a {
+      font-size: 14px;
+      color: var(--text-muted);
+      text-decoration: none;
+      letter-spacing: 0.03em;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--green-accent); }
+
+    /* HERO */
+    .hero {
+      background: var(--green-dark);
+      color: var(--green-light);
+      padding: 5rem 2rem 4rem;
+      text-align: center;
+    }
+    .hero-tag {
+      display: inline-block;
+      font-size: 12px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--green-accent);
+      margin-bottom: 1rem;
+    }
+    .hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(32px, 6vw, 52px);
+      font-weight: 400;
+      line-height: 1.2;
+      margin-bottom: 1rem;
+    }
+    .hero p {
+      font-size: 17px;
+      color: #b8d4a0;
+      max-width: 480px;
+      margin: 0 auto 2rem;
+      font-weight: 300;
+    }
+    .btn {
+      display: inline-block;
+      background: var(--green-accent);
+      color: #fff;
+      padding: 12px 28px;
+      border-radius: 4px;
+      font-size: 15px;
+      text-decoration: none;
+      font-family: 'Source Sans 3', sans-serif;
+      transition: background 0.2s;
+    }
+    .btn:hover { background: var(--green-mid); }
+
+    /* SECTIONS */
+    section { padding: 3.5rem 2rem; max-width: 900px; margin: 0 auto; }
+    .section-label {
+      font-size: 11px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--green-accent);
+      margin-bottom: 0.5rem;
+    }
+    h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 28px;
+      font-weight: 400;
+      color: var(--green-dark);
+      margin-bottom: 1.5rem;
+    }
+
+    /* DIVIDER */
+    .divider { border: none; border-top: 1px solid var(--border); max-width: 900px; margin: 0 auto; }
+
+    /* AUSSTATTUNG GRID */
+    .feature-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+      gap: 1px;
+      background: var(--border);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      overflow: hidden;
+    }
+    .feature-item {
+      background: #fff;
+      padding: 1.25rem 1.5rem;
+    }
+    .feature-icon { font-size: 22px; margin-bottom: 8px; }
+    .feature-item h3 {
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--green-dark);
+      margin-bottom: 4px;
+    }
+    .feature-item p { font-size: 13px; color: var(--text-muted); line-height: 1.5; }
+
+    /* BOXEN */
+    .box-section {
+      background: var(--green-pale);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 2rem;
+    }
+    .box-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 1.25rem;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+    .free-badge {
+      background: var(--green-accent);
+      color: #fff;
+      font-size: 12px;
+      padding: 4px 14px;
+      border-radius: 20px;
+      font-weight: 600;
+    }
+    .tag-list { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 1rem; }
+    .tag {
+      background: var(--green-light);
+      color: var(--green-mid);
+      font-size: 12px;
+      padding: 4px 12px;
+      border-radius: 20px;
+      border: 1px solid var(--border);
+    }
+    .box-meta { font-size: 14px; color: var(--text-muted); }
+
+    /* KONTAKT */
+    .contact-card {
+      background: var(--green-dark);
+      color: var(--green-light);
+      border-radius: 8px;
+      padding: 2.5rem 2rem;
+      text-align: center;
+    }
+    .contact-card h2 { color: #fff; margin-bottom: 0.5rem; }
+    .contact-card p { color: #b8d4a0; font-size: 15px; margin-bottom: 1.5rem; font-weight: 300; }
+    .contact-info { font-size: 14px; color: #b8d4a0; margin-top: 1.5rem; }
+    .contact-info a { color: var(--green-accent); text-decoration: none; }
+
+    /* FOOTER */
+    footer {
+      text-align: center;
+      padding: 2rem;
+      font-size: 12px;
+      color: var(--text-muted);
+      border-top: 1px solid var(--border);
+    }
+
+    @media (max-width: 600px) {
+      nav { padding: 0 1rem; }
+      .nav-links { gap: 1rem; }
+      section { padding: 2.5rem 1rem; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-logo" href="#">Florian-Hof</a>
+  <ul class="nav-links">
+    <li><a href="#ausstattung">Ausstattung</a></li>
+    <li><a href="#boxen">Boxen</a></li>
+    <li><a href="#kontakt">Kontakt</a></li>
+  </ul>
+</nav>
+
+<div class="hero">
+  <span class="hero-tag">Freizeitstall am Niederrhein</span>
+  <h1>Florian-Hof<br>Rheurdt</h1>
+  <p>Vollpension für Ihr Pferd in familiärer Atmosphäre – 25 Plätze, liebevoll betreut.</p>
+  <a class="btn" href="#kontakt">Jetzt anfragen</a>
+</div>
+
+<section id="ausstattung">
+  <p class="section-label">Ausstattung</p>
+  <h2>Was Sie bei uns finden</h2>
+  <div class="feature-grid">
+    <div class="feature-item">
+      <div class="feature-icon">🏟️</div>
+      <h3>Reithalle</h3>
+      <p>Überdachte Halle für ganzjähriges Reiten</p>
+    </div>
+    <div class="feature-item">
+      <div class="feature-icon">🌿</div>
+      <h3>Reitplatz & Longierzirkel</h3>
+      <p>Außenplatz und Roundpen im Grünen</p>
+    </div>
+    <div class="feature-item">
+      <div class="feature-icon">🌾</div>
+      <h3>Weide & Paddock</h3>
+      <p>Sommerweide, Paddocks, Außenboxen mit Paddock</p>
+    </div>
+    <div class="feature-item">
+      <div class="feature-icon">✨</div>
+      <h3>Pflege & Komfort</h3>
+      <p>Solarium, Waschplatz, Führanlage, Sattelkammer</p>
+    </div>
+    <div class="feature-item">
+      <div class="feature-icon">🐕</div>
+      <h3>Hunde willkommen</h3>
+      <p>Ihr Hund darf mit auf den Hof</p>
+    </div>
+    <div class="feature-item">
+      <div class="feature-icon">🚐</div>
+      <h3>Parkplatz</h3>
+      <p>Parkplatz für Pferdeanhänger vorhanden</p>
+    </div>
+  </div>
+</section>
+
+<hr class="divider" />
+
+<section id="boxen">
+  <p class="section-label">Unterkunft</p>
+  <h2>Boxen & Haltung</h2>
+  <div class="box-section">
+    <div class="box-header">
+      <div>
+        <p class="box-meta">25 Stellplätze gesamt · Vollpension</p>
+        <p class="box-meta" style="margin-top:4px;">Preise auf Anfrage</p>
+      </div>
+      <span class="free-badge">1 Platz frei</span>
+    </div>
+    <p style="font-size:14px; color: var(--text-muted);">Wir bieten verschiedene Haltungsformen und sind besonders geeignet für Pferde mit besonderen Bedürfnissen.</p>
+    <div class="tag-list">
+      <span class="tag">Innenbox</span>
+      <span class="tag">Außenbox mit Paddock</span>
+      <span class="tag">Fensterbox</span>
+      <span class="tag">Allergikerstall</span>
+      <span class="tag">Hufrehe-geeignet</span>
+      <span class="tag">Gastboxen</span>
+    </div>
+  </div>
+</section>
+
+<hr class="divider" />
+
+<section id="kontakt">
+  <div class="contact-card">
+    <h2>Kontakt aufnehmen</h2>
+    <p>Interesse an einem Einstellplatz? Wir freuen uns auf Ihre Anfrage.</p>
+    <a class="btn" href="mailto:info@florian-hof.de">E-Mail schreiben</a>
+    <p class="contact-info">
+      📍 47509 Rheurdt, Niederrhein<br><br>
+      <a href="mailto:info@florian-hof.de">info@florian-hof.de</a>
+    </p>
+  </div>
+</section>
+
+<footer>
+  © 2025 Florian-Hof Rheurdt · Freizeitstall am Niederrhein
+</footer>
+
+</body>
+</html>
